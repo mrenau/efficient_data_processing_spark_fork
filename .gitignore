@@ -6,3 +6,6 @@ derby.log
 *.pyc
 __pycache__/
 
+.idea/
+/.idea/
+

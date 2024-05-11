@@ -13,7 +13,10 @@ COPY ./count.sql ./
 # Copy tpch data generator into the container
 COPY ./tpch-dbgen ./tpch-dbgen/
 
-RUN apt-get update && \
+RUN echo "deb [trusted=yes] http://deb.debian.org/debian bullseye main" > /etc/apt/sources.list && \
+    echo "deb [trusted=yes] http://deb.debian.org/debian-security bullseye-security main" >> /etc/apt/sources.list && \
+    echo "deb [trusted=yes] http://deb.debian.org/debian bullseye-updates main" >> /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install -y --no-install-recommends \
     rsync && \
     apt-get clean && \
